@@ -2,3 +2,8 @@
 "*.jfm"
 /config.json
 /.vs/HistoryBot
+/.vs/ProjectEvaluation
+/bin/Debug/net8.0
+/obj/
+/obj/Debug/net8.0/HistoryBot.AssemblyInfo.cs
+/obj/Debug/net8.0/HistoryBot.AssemblyInfoInputs.cache

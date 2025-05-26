@@ -28,7 +28,7 @@ namespace BotTemplateSample
         static void Main()
         {
             Console.WriteLine("Start!");            
-            var file = System.IO.File.OpenText("D:\\Repos\\TBotNya\\config.json");
+            var file = System.IO.File.OpenText("D:\\Repos\\HistoryBot\\config.json");
             string str = file.ReadToEnd();
             var config = JsonConvert.DeserializeObject<Config>(str);
 
