@@ -1,6 +1,8 @@
-﻿using Telegram.BotAPI.AvailableTypes;
+﻿using TBotLogic.Commands;
 using Telegram.BotAPI;
-namespace TBotLogic.Commands
+using Telegram.BotAPI.AvailableTypes;
+
+namespace HistoryBot.Code
 {
     internal interface IBotCommand
     {

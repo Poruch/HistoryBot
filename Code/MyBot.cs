@@ -50,7 +50,7 @@ namespace BotTemplateSample
         }
         protected override void OnMessage(Message message)
         {
-            
+
             // Ignore user 777000 (Telegram)
             if (message.From?.Id == TelegramConstants.TelegramId)
             {
@@ -62,14 +62,14 @@ namespace BotTemplateSample
 
             if (message.Chat.Type == ChatTypes.Private) // Private Chats
             {
-                if(stateMachine != null) 
-                if (stateMachine.Perform(message))
-                {
-                    if (stateMachine.NextState() == null)
+                if (stateMachine != null)
+                    if (stateMachine.Perform(message))
                     {
-                        stateMachine = null;
+                        if (stateMachine.NextState() == null)
+                        {
+                            stateMachine = null;
+                        }
                     }
-                }
             }
 
             // Group chats
@@ -79,6 +79,7 @@ namespace BotTemplateSample
                 return;
             }
 
+            if(stateMachine != null)
             if (stateMachine.IsBlock) return;
             // If the command includes a mention, you should verify that it is for your bot, otherwise you will need to ignore the command.
             string? pattern = $@"^\/(?<COMMAND>\w*)(?:|@{Me.Username})(?:$|\s(?<PARAMETERS>.*))";
@@ -101,7 +102,7 @@ namespace BotTemplateSample
         {
             string[]? args = parameters.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             Console.WriteLine("Params: {0}", args.Length);
-            stateMachine = commands.Command(cmd,message,args) ?? stateMachine;
+            stateMachine = commands.Command(cmd, message, args) ?? stateMachine;
         }
 
         protected override void OnBotException(BotRequestException exp)
